@@ -28,12 +28,17 @@ export class UsersService {
   }
 
   async update(_id: string, updateUserInput: UpdateUserInput) {
+    if (updateUserInput.password) {
+      updateUserInput.password = await bcrypt.hash(
+        updateUserInput.password,
+        10,
+      );
+    }
     return this.usersRepository.findOneAndUpdate(
       { _id },
       {
         $set: {
           ...updateUserInput,
-          password: await this.hashPassword(updateUserInput.password),
         },
       },
     );
