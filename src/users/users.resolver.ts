@@ -22,6 +22,7 @@ export class UsersResolver {
   }
 
   @Query(() => User, { name: 'user' })
+  @UseGuards(GqlAuthGuard)
   findOne(
     @Args('_id')
     _id: string,
@@ -30,11 +31,13 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
+  @UseGuards(GqlAuthGuard)
   updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
     return this.usersService.update(updateUserInput._id, updateUserInput);
   }
 
   @Mutation(() => User)
+  @UseGuards(GqlAuthGuard)
   removeUser(
     @Args('_id')
     _id: string,
