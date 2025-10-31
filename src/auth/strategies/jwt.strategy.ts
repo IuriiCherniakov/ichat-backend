@@ -10,9 +10,7 @@ type AuthCookies = {
 };
 
 interface ValidationRequest extends Request {
-  req: {
-    cookies: AuthCookies;
-  };
+  cookies: AuthCookies;
 }
 
 @Injectable()
@@ -21,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (request: ValidationRequest) => {
-          return request.req.cookies?.Authentication;
+          return request.cookies?.Authentication;
         },
       ]),
       secretOrKey: configService.getOrThrow('JWT_SECRET'),
