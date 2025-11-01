@@ -9,7 +9,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { LoggerModule } from 'nestjs-pino';
 import { AuthModule } from './auth/auth.module';
-import { UsersController } from './users/users.controller';
 
 @Module({
   imports: [
@@ -46,7 +45,7 @@ import { UsersController } from './users/users.controller';
     }),
     AuthModule,
   ],
-  controllers: [AppController, UsersController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
