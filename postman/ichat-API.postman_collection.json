@@ -131,39 +131,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/graphql - create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    createUser(createUserInput: {\n        email:\"newUser1@email.email\",\n        password:\"fsdfdikeimk@#KkllL___323\"\n    }){\n        _id,\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
 				}
 			]
-		},
-		{
-			"name": "create user",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"user1@email.ch\",\n    \"password\": \"jkfjdf@QQQLLLL____12122\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "login",
